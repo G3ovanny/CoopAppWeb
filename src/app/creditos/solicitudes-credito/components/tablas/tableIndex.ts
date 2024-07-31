@@ -1,26 +1,34 @@
 export const indexCells = [
 
     {
-        id: 'num_solicitud',
+        id: 'id',
         //numeric: false,
         //disablePadding: true,
-        label: 'N° DE SOLICITUD',
+        label: 'ID SOLICITUD',
         width: 100
     },
     {
-        id: 'cento_costo',
+        id: 'monto',
         //numeric: false,
         //disablePadding: true,
-        label: 'CENTRO DE COSTO',
+        label: 'MONTO',
         width: 200
     },
     {
-        id: 'fecha_solicitud',
+        id: 'plazo',
         //numeric: false,
         //disablePadding: true,
-        label: 'FECHA DE SOLICITUD',
+        label: 'PLAZO (MESES)',
         width: 350
     },
+    {
+        id: 'fecha_solicitud',
+        numeric: false,
+        //disablePadding: true,
+        label: 'FECHA DE SOLICITUD',
+        width: 400
+    },
+    
     {
         id: 'tipo_solicitud',
         numeric: false,
@@ -28,4 +36,5 @@ export const indexCells = [
         label: 'TIPO DE SOLICITUD',
         width: 400
     },
+   
 ]

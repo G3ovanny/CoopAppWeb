@@ -1,45 +1,24 @@
 import PropTypes from 'prop-types';
-import { Avatar, Box, Chip, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
-import { forwardRef, useEffect } from "react"
+import { Avatar, Box, Chip, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography, Collapse } from "@mui/material";
+import { forwardRef, useEffect, useState } from "react";
 import { useTheme } from '@emotion/react';
 import { usePathname } from "next/navigation";
-// import { useMenuStore } from '../../hooks'
 import Link from 'next/link';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 export const NavItem = ({ drawerWidth = 240, item, level }) => {
-
     const theme = useTheme();
-    const onSelectItem = (id) => {
-        console.log(id)
-    }
-
-    let itemTarget = '_self';
-
-    if (item.target) {
-        itemTarget = '_blank';
-    }
-
-    let listItemProps = {
-        component: forwardRef((props, ref) => (
-            <Link
-                href={item.url}
-            >
-                <ListItemButton ref={ref} {...props} target={itemTarget} />
-            </Link>
-        ))
-    };
-
-    if (item?.external) {
-        listItemProps = { component: 'Link', href: item.url, target: itemTarget };
-    }
-
-    const isOpenMenu = true
-    const Icon = item.icon;
-    const itemIcon = item.icon ? <Icon style={{ fontSize: isOpenMenu ? '1rem' : '1.25rem' }} /> : false;
+    const [open, setOpen] = useState(false);
     const currentPath = usePathname();
-    const isSelected = currentPath === item.url
+
+    const isSelected = currentPath === item.url;
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
+
     useEffect(() => {
         const currentIndex = document.location.pathname
             .toString()
@@ -49,15 +28,33 @@ export const NavItem = ({ drawerWidth = 240, item, level }) => {
             // selectItem(item.id)
         }
     }, [item.id]);
+
+    let listItemProps = {
+        component: forwardRef((props, ref) => (
+            <Link
+                href={item.url} style={{ textDecoration: 'none' }}
+            >
+                <ListItemButton ref={ref} {...props} />
+            </Link>
+        ))
+    };
+
+    if (item?.external) {
+        listItemProps = { component: 'Link', href: item.url, target: '_blank' };
+    }
+
+    const Icon = item.icon;
+    const itemIcon = item.icon ? <Icon style={{ fontSize: drawerWidth ? '1rem' : '1.25rem' }} /> : false;
+
     return (
-        <Box >
+        <>
             <ListItemButton
                 {...listItemProps}
-                onClick={() => onSelectItem(item.id)}
+                onClick={item.type === 'collapse' ? handleClick : () => console.log(item.id)}
                 selected={isSelected}
                 sx={{
                     zIndex: 1201,
-                    pl: isSelected ? `${level * 28}px` : 1.5,
+                    pl: isSelected ? `${level * 8}px` : 1.5,
                     py: !isSelected && level === 1 ? 0.5 : 0.75,
                     ...(isSelected && {
                         '&:hover': {
@@ -85,7 +82,6 @@ export const NavItem = ({ drawerWidth = 240, item, level }) => {
                         }
                     })
                 }}
-
             >
                 {itemIcon && (
                     <ListItemIcon
@@ -117,13 +113,17 @@ export const NavItem = ({ drawerWidth = 240, item, level }) => {
                 <ListItemText
                     primary={
                         <Typography
-                            variant="h7"
-                            sx={{ color: isSelected ? iconSelectedColor : textColor }}
+                            variant="body2"  // Changed from "h7" to "body2"
+                            sx={{
+                                color: isSelected ? iconSelectedColor : textColor,
+                                fontSize: '0.85rem',  // Adjust this value as needed
+                            }}
                         >
                             {item.title}
                         </Typography>
                     }
                 />
+                {item.type === 'collapse' && (open ? <ExpandLess /> : <ExpandMore />)}
                 {(isSelected || (!isSelected && level !== 1)) && item.chip && (
                     <Chip
                         color={item.chip.color}
@@ -134,7 +134,16 @@ export const NavItem = ({ drawerWidth = 240, item, level }) => {
                     />
                 )}
             </ListItemButton>
-        </Box>
+            {item.type === 'collapse' && (
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <Box pl={4}>
+                        {item.children.map((child) => (
+                            <NavItem key={child.id} item={child} level={level + 1} />
+                        ))}
+                    </Box>
+                </Collapse>
+            )}
+        </>
     );
 };
 

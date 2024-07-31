@@ -4,10 +4,14 @@ import { BotonesBreadcrumbs } from './components/botonesBreadcrumbs/BotonesBread
 import { Tabla } from './components/tablas/Tabla'
 import { Alert, Grid, Toolbar } from '@mui/material'
 import { SolicitudModal } from './components/modal/SolicitudModal'
+import { useSolicitudStore } from '@/app/hooks/creditos/useSolicitudStore'
 
 export default function Creditos() {
+
   const title = 'Solicitudes de crédito'
   const mensaje = ''
+
+
   return (
     <>
       <Breadcrumbs title={title} botones={<BotonesBreadcrumbs />} />

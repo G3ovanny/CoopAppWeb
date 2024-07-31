@@ -19,6 +19,9 @@ export const TableIndex = ({ onSelectAllClick, numSelected, rowCount, indexCells
 
     return (
         <TableHead
+            sx={{
+                backgroundColor: 'secondary.main'
+            }}
             component="div"
         >
             <TableRow
@@ -29,8 +32,11 @@ export const TableIndex = ({ onSelectAllClick, numSelected, rowCount, indexCells
                     component="div"
                 >
                     <Checkbox
+                        sx={{
+                            color: 'secondary.contrastText'
+                        }}
                         component='div'
-                        color='primary'
+
                         //indeterminate={numSelected > 0 && numSelected < rowCount}
                         checked={rowCount > 0 && numSelected === rowCount}
                         onChange={onSelectAllClick}
@@ -39,6 +45,9 @@ export const TableIndex = ({ onSelectAllClick, numSelected, rowCount, indexCells
                 {
                     indexCells.map((indexCell) => (
                         <TableCell
+                            sx={{
+                                color: 'secondary.contrastText'
+                            }}
                             key={indexCell.id}
                             align={indexCell.numeric ? 'right' : 'left'}
                             padding={indexCell.disablePadding ? 'none' : 'normal'}

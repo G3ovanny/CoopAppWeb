@@ -6,14 +6,14 @@ const icons = {
 
 export const creditos = {
     id: 'creditos',
-    title: 'Solicitud de credito',
+    title: 'Gestión de Solicitudes',
     type: 'group',
     children: [
         {
-            id: 'Lista de creditos',
-            title: 'Lista de creditos',
+            id: 'solicitudes',
+            title: 'Solicitudes de creditos',
             type: 'item',
-            url: '/creditos/solicitudes_credito',
+            url: '/creditos/solicitudes-credito',
             icon: icons.RequestQuote,
         }
     ]

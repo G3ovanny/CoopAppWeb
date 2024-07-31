@@ -1,27 +1,14 @@
 import PropTypes from 'prop-types';
-//import { useSelector } from 'react-redux';
-import {NavItem} from './NavItem'
-// material-ui
+import { NavItem } from './NavItem'
 import { Box, Divider, List, Toolbar, Typography } from '@mui/material';
+import { NavCollapse } from './NavCollapse';
 
-// project import
-
-
-//import { useMenuStore } from '../../hooks/';
-
-// ==============================|| NAVIGATION - LIST GROUP ||============================== //
-
-export const NavGroup = ({ item }:any) => {
-
-  //const { isOpenMenu } = useMenuStore();
-
-  const navCollapse = item.children?.map((menuItem : any) => {
+export const NavGroup = ({ item }: any) => {
+  const navCollapse = item.children?.map((menuItem: any) => {
     switch (menuItem.type) {
       case 'collapse':
         return (
-          <Typography key={menuItem.id} variant="caption" color="error" sx={{ p: 2.5 }}>
-            collapse - only available in paid version
-          </Typography>
+          <NavCollapse key={menuItem.id} item={menuItem} level={1} />
         );
       case 'item':
         return <NavItem key={menuItem.id} item={menuItem} level={1} />;
@@ -33,16 +20,15 @@ export const NavGroup = ({ item }:any) => {
         );
     }
   });
+
   return (
-    <Box >
+    <Box
+    >
       <List
         subheader={
           item.title && (
-            <Box
-              sx={{ pl: 3, mb: 1.5 }}>
-              <Typography
-                variant="subtitle2"
-                color="secondary">
+            <Box sx={{ pl: 2, mb: 1, mt: 2 }}>
+              <Typography variant="subtitle2" color="secondary">
                 {item.title}
               </Typography>
             </Box>
@@ -59,4 +45,3 @@ export const NavGroup = ({ item }:any) => {
 NavGroup.propTypes = {
   item: PropTypes.object
 };
-

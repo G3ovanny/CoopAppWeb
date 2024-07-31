@@ -20,14 +20,14 @@ interface CustomThemeOptions extends ThemeOptions {
 export const greenTheme = createTheme({
     palette: {
       primary: {
-        main: '#00ae06'
+        main: '#006628'
       },
       secondary: {
-        main: '#4ac300'
+        main: '#00953B'
       },
       // Utiliza los colores personalizados
       customTertiary: {
-        main: '#c1e23a'
+        main: '#FFD700'
       },
       customQuaternary: {
         main: '#ffff81'

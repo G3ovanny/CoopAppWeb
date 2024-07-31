@@ -1,7 +1,8 @@
+import { configuracion } from "./configuracion";
 import { creditos } from "./creditos";
-import { dashboard } from "./dashboard";
+import { inicio } from "./inicio";
 
 
 export const menuItems = {
-    items: [dashboard, creditos]
+    items: [inicio, creditos, configuracion]
 }

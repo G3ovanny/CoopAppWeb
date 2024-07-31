@@ -2,12 +2,11 @@
 import { LogoutOutlined, MenuOpenOutlined } from "@mui/icons-material"
 import { AppBar, Box, Toolbar, IconButton, Typography, Grid, Drawer } from "@mui/material"
 import { Navigation } from "./Navigation"
+import { Profile } from "./profile"
 //import { useAuthStore, useMenuStore } from "../../hooks"
 
-const drawerWidth = 240
+const drawerWidth = 280
 export const Navbar = ({ window, menuItems }: any) => {
-
-
     // const { startLogout } = useAuthStore();
 
     // const { isOpenMenu, openMenu, closeMenu } = useMenuStore();
@@ -29,13 +28,14 @@ export const Navbar = ({ window, menuItems }: any) => {
         window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box >
+        <Box  >
             <AppBar
                 position='fixed'
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` }
-                }}>
+                }}
+            >
                 <Toolbar>
                     <IconButton
                         color='inherit'
@@ -46,11 +46,7 @@ export const Navbar = ({ window, menuItems }: any) => {
                     </IconButton>
                     <Grid container direction='row' justifyContent='space-between' alignItems='center'>
                         <Typography className='animate__animated animate__jackInTheBox'>Unidad</Typography>
-                        <IconButton
-                            //color='quaternary'
-                            onClick={handleLogout}>
-                            <LogoutOutlined />
-                        </IconButton>
+                        <Profile />
                     </Grid>
                 </Toolbar>
             </AppBar>
@@ -59,7 +55,7 @@ export const Navbar = ({ window, menuItems }: any) => {
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
-                <Drawer
+                {/* <Drawer
                     container={container}
                     variant="temporary"
                     open={isOpenMenu}
@@ -75,9 +71,9 @@ export const Navbar = ({ window, menuItems }: any) => {
                             width: drawerWidth,
                         },
                     }}
-                >
-                    {/* <Navigation menuItems ={menuItems}/> */}
-                </Drawer>
+                > */}
+                {/* <Navigation menuItems ={menuItems}/> */}
+                {/* </Drawer> */}
                 <Drawer
                     variant="permanent"
                     sx={{

@@ -20,17 +20,17 @@ interface CustomThemeOptions extends ThemeOptions {
 export const grayTheme = createTheme({
     palette: {
       primary: {
-        main: '#222831'
+        main: '#26292c'
       },
       secondary: {
-        main: '#393E46'
+        main: '#545960'
       },
       // Utiliza los colores personalizados
       customTertiary: {
-        main: '#B55400'
+        main: '#8d9098'
       },
       customQuaternary: {
-        main: '#EEEEEE'
+        main: '#c9d1db'
       },
       error: {
         main: red.A400

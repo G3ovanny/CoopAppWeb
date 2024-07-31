@@ -58,9 +58,9 @@ export const BasicTable = ({ title, objetos, objactive, setObjecActive, startLoa
 
     useEffect(() => {
         if (startLoadingObjects) {
-            startLoadingObjects();
+            startLoadingObjects;
         }
-    }, [startLoadingObjects]);
+    }, []);
 
     return (
         <div>

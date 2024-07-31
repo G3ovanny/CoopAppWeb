@@ -21,17 +21,17 @@ interface CustomThemeOptions extends ThemeOptions {
 export const darkTheme = createTheme({
     palette: {
         primary: {
-            main: '#000000'
+            main: '#151f2c'
         },
         secondary: {
-            main: '#150050'
+            main: '#315165'
         },
-        tertiary: {
-            main: '#3F0071'
+        customTertiary: {
+            main: '#527ca4'
 
         },
-        quaternary: {
-            main: '#FB2576'
+        customQuaternary: {
+            main: '#6fb4d6'
         },
         error: {
             main: red.A400

@@ -1,10 +1,10 @@
 import { Grid, Typography } from '@mui/material'
 
-interface LayoutProps{
+interface LayoutProps {
     children: React.ReactNode;
     title: string;
 }
-export const AuthLayouth = ({ children, title  }: LayoutProps) => {
+export const AuthLayouth = ({ children, title }: LayoutProps) => {
     return (
         <Grid
             container
