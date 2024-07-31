@@ -1,10 +1,10 @@
 import { Box, Divider, Toolbar, Typography, useTheme } from '@mui/material';
 import { NavGroup } from './NavGroup';
 
-export const Navigation = (menuItems) => {
+export const Navigation = (menuItems:any) => {
     const theme = useTheme();
 
-    const navGroups = menuItems.menuItems.items.map((item) => {
+    const navGroups = menuItems.menuItems.items.map((item:any) => {
         switch (item.type) {
             case 'group':
                 return <NavGroup key={item.id} item={item} />;

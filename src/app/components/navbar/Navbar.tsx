@@ -2,7 +2,7 @@
 import { LogoutOutlined, MenuOpenOutlined } from "@mui/icons-material"
 import { AppBar, Box, Toolbar, IconButton, Typography, Grid, Drawer } from "@mui/material"
 import { Navigation } from "./Navigation"
-import { Profile } from "./profile"
+import { Profile } from "./Profile"
 //import { useAuthStore, useMenuStore } from "../../hooks"
 
 const drawerWidth = 280

@@ -58,7 +58,7 @@ export const NavCollapse = ({ drawerWidth = 240, item, level }: any) => {
                             bottom: 0,
                             left: -8, // Adjust the position to match the desired style
                             width: '1px',
-                            backgroundColor: theme.palette.primary.main,
+                            backgroundColor: 'primary.main',
                         }
 
                     }}

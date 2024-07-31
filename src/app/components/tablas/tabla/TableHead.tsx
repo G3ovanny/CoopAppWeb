@@ -18,8 +18,15 @@ export const TableHead = ({ title, numSelected, tableButtons }: Props) => {
                 sx={{
                     pl: { sm: 2 },
                     pr: { xs: 1, sm: 1 },
-                    ...(numSelected)
-                }}>
+                    ...(numSelected > 0 && {
+                        backgroundColor: 'primary.main',
+                        color: 'white',
+                    }),
+                    ...(numSelected > 5 && {
+                        border: '1px solid red',
+                    })
+                }}
+            >
                 {numSelected > 0 ? (
                     <Typography sx={{ flex: "1 1 100%" }}
                         color="inherit"

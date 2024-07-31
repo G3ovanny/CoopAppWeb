@@ -49,16 +49,6 @@ const listaLugares = [
     }
 ]
 
-// const listaLugares = [
-//     {
-//         'id': 1,
-//         'detalle': 'TULCAN'
-//     },
-//     {
-//         'id': 2,
-//         'detalle': 'SAN GABRIEL'
-//     }
-// ]
 export const SolicitudModal = () => {
     const { closeModal, nameModal } = useModalStore();
     const { activeSolicitud, startSavingSolicitud } = useSolicitudStore()
@@ -141,7 +131,7 @@ export const SolicitudModal = () => {
                                     id="demo-simple-select"
                                     label="Oficina"
                                     value={lugar_solicitud || ''}
-                                    onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'lugar_solicitud' } })}
+                                    // onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'lugar_solicitud' } })}
                                 >
                                     {listaLugares.map(option => (
                                         <MenuItem
@@ -167,7 +157,7 @@ export const SolicitudModal = () => {
                                     id="demo-simple-select"
                                     label="Tipo de solicitud"
                                     value={tipo_solicitud || ''}
-                                    onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'tipo_solicitud' } })}
+                                    // // onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'tipo_solicitud' } })}
                                 >
                                     {listaLugares.map(option => (
                                         <MenuItem
@@ -193,7 +183,7 @@ export const SolicitudModal = () => {
                                     id="demo-simple-select"
                                     label="Tipo de segmentacion"
                                     value={tipo_segmentacion || ''}
-                                    onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'tipo_segmentacion' } })}
+                                    // // onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'tipo_segmentacion' } })}
                                 >
                                     {listaLugares.map(option => (
                                         <MenuItem
@@ -219,7 +209,7 @@ export const SolicitudModal = () => {
                                     id="demo-simple-select"
                                     label="Tipo de garantia"
                                     value={tipo_garantia || ''}
-                                    onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'tipo_garantia' } })}
+                                    // // onChange={(e) => onInputChange({ target: { value: e.target.value, name: 'tipo_garantia' } })}
                                 >
                                     {listaLugares.map(option => (
                                         <MenuItem
