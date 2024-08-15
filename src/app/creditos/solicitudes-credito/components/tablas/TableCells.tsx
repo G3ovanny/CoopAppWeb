@@ -4,42 +4,42 @@ import { Checkbox, TableBody, TableCell, TableRow } from '@mui/material'
 import { useSolicitudStore } from '@/app/hooks/creditos/useSolicitudStore'
 
 interface TableCellProps {
-  listSolicitud: any[]; // Ajusta el tipo según la estructura de tus datos
+  listSolicitudCredito: any[]; // Ajusta el tipo según la estructura de tus datos
   isSelected: (solicitud: any) => boolean; // Ajusta el tipo según la función de selección implementada
   onSelected: (event: React.MouseEvent<HTMLDivElement>, solicitud: any) => void; // Ajusta el tipo según la función de selección implementada
 }
 
 export const TableCells = ({ list, page, rowPerPage }: any) => {
 
-  const { activeSolicitud, listSolicitud, setActiveSolicitud } = useSolicitudStore()
+  const { activeSolicitudCredito, listSolicitudCredito, setActiveSolicitudCredito } = useSolicitudStore()
 
   const onSelected = (solicitud: any) => {
 
-    const selectedIndex = activeSolicitud.indexOf(solicitud)
+    const selectedIndex = activeSolicitudCredito.indexOf(solicitud)
 
     let newSelected: any = []
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(activeSolicitud, solicitud)
+      newSelected = newSelected.concat(activeSolicitudCredito, solicitud)
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(activeSolicitud.slice(1));
-    } else if (selectedIndex === activeSolicitud.length - 1) {
-      newSelected = newSelected.concat(activeSolicitud.slice(0, -1))
+      newSelected = newSelected.concat(activeSolicitudCredito.slice(1));
+    } else if (selectedIndex === activeSolicitudCredito.length - 1) {
+      newSelected = newSelected.concat(activeSolicitudCredito.slice(0, -1))
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
-        activeSolicitud.slice(0, selectedIndex),
-        activeSolicitud.slice(selectedIndex + 1)
+        activeSolicitudCredito.slice(0, selectedIndex),
+        activeSolicitudCredito.slice(selectedIndex + 1)
       );
     }
-    setActiveSolicitud(newSelected)
+    setActiveSolicitudCredito(newSelected)
   }
 
-  const isSelected = (id: any) => activeSolicitud.indexOf(id) !== -1
+  const isSelected = (id: any) => activeSolicitudCredito.indexOf(id) !== -1
 
   let lista = null
 
   if (!list) {
-    lista = listSolicitud
+    lista = listSolicitudCredito
   } else {
     lista = list
   }
@@ -48,7 +48,7 @@ export const TableCells = ({ list, page, rowPerPage }: any) => {
     <TableBody
       component="div"
     >
-      {listSolicitud.slice(page
+      {listSolicitudCredito.slice(page
         // * rowsPerPage, page * rowsPerPage + rowsPerPage
       )
         .map((solicitud: any) => {

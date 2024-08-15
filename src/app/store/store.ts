@@ -4,8 +4,11 @@ import { authSlice } from "./auth/authSlice";
 import { alertDialogSlice } from "./ui/alertDialogSlice";
 import { solicitudSlice } from "./creditos/solicitudSlice";
 import { formaPagoSlice } from "./creditos/formaPagoSlice";
+import { tipoGarantiaSlice } from "./creditos/tipoGarantiaSlice";
+import { tipoSolicitudSlice } from "./creditos/tipoSolicitudSlice";
+import { tipoSegmentacionSlice } from "./creditos/tipoSegmentacionSlice";
 
-export const makeStore:any = () => {
+export const makeStore: any = () => {
   return configureStore({
     reducer: {
       //!reducers ui
@@ -16,6 +19,9 @@ export const makeStore:any = () => {
       //!reducers modulo creditos
       solicitud: solicitudSlice.reducer,
       formaPago: formaPagoSlice.reducer,
+      tipoGarantia: tipoGarantiaSlice.reducer,
+      tipoSolicitud: tipoSolicitudSlice.reducer,
+      tipoSegmentacion: tipoSegmentacionSlice.reducer,
 
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

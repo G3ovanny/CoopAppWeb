@@ -1,13 +1,18 @@
 'use client'
+import { useSolicitudStore } from '@/app/hooks/creditos/useSolicitudStore';
 import { useModalStore } from '@/app/hooks/ui/useModal';
+
 import { NoteAdd } from '@mui/icons-material';
 import { IconButton, Tooltip } from '@mui/material';
 
 export const BotonesBreadcrumbs = () => {
   const { openModal, nameModal } = useModalStore();
-
+  const { setActiveSolicitudCredito } = useSolicitudStore()
+  
   const handeleAddCredit = () => {
-    openModal('Nuevo crédito')
+    setActiveSolicitudCredito([])
+    
+    //openModal('Nuevo crédito')
   }
 
   return (

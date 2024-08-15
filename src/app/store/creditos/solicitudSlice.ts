@@ -1,74 +1,78 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
+interface SolicitudCredito {
+    id: number;
+    listSolicitudCredito: any[]; // Replace with specific type if known
+}
+interface SolicitudCreditoState {
+    isLoadingSolicitudesCredito: boolean;
+    activeSolicitudCredito: SolicitudCredito[];
+    listSolicitudCredito: SolicitudCredito[];
+    inicialSolicitudCredito: any[]; // Replace with specific type if known
+    mensajeSolicitudCredito: string;
+}
+const initialState: SolicitudCreditoState = {
+    isLoadingSolicitudesCredito: false,
+    activeSolicitudCredito: [],
+    listSolicitudCredito: [],
+    inicialSolicitudCredito: [],
+    mensajeSolicitudCredito: '',
+};
 
 
 export const solicitudSlice = createSlice({
     name: 'solicitud',
-    initialState: {
-        isLoadingSolicitud: true,
-        activeSolicitud: [],
-        listSolicitud: [],
-        inicialSolicitud: [],
-        mensajeSolicitud: '',
-    },
+    initialState,
     reducers: {
-        onLoadSolicitud: (state, { payload }) => {
-            state.isLoadingSolicitud = false;
-            state.listSolicitud = payload
-            // //state.listSolicitud = payload
-            // payload.forEach((solicitud:any) => {
-            //     const exist = state.listSolicitud.some(dbsolicitud => dbsolicitud.id === solicitud.id);
-            //     if (!exist) {
-            //         state.listSolicitud.push(solicitud)
-            //     }
-            // });
+        onLoadSolicitudCredito: (state, action: PayloadAction<SolicitudCredito[]>) => {
+            action.payload.forEach(solicitudCredito => {
+                const exist = state.listSolicitudCredito.some(dbSolicitudCredito => dbSolicitudCredito.id === solicitudCredito.id);
+                if (!exist) {
+                    state.listSolicitudCredito.push(solicitudCredito)
+                }
+            });
         },
-        onSetActiveSolicitud: (state, { payload }) => {
-            state.activeSolicitud = payload;
-            state.inicialSolicitud = [];
-            if (state.activeSolicitud.length === 1) {
-                state.inicialSolicitud = payload[0].listSolicitud
+        onSetActiveSolicitudCredito: (state, action: PayloadAction<SolicitudCredito[]>) => {
+            state.activeSolicitudCredito = action.payload;
+            state.inicialSolicitudCredito = [];
+            if (state.activeSolicitudCredito.length === 1) {
+                state.inicialSolicitudCredito = action.payload[0].listSolicitudCredito;
             }
         },
-        onAddNewSolicitud: (state, { payload }) => {
-            state.activeSolicitud = [];
-            state.inicialSolicitud = [];
-            state.mensajeSolicitud = 'Los datos se han guardado correctamente';
-            //state.listSolicitud.push(payload);
+        onAddNewSolicitudCredito: (state, { payload }) => {
+            state.listSolicitudCredito.push(payload);
+            state.activeSolicitudCredito = [];
+            state.inicialSolicitudCredito = []
+            state.mensajeSolicitudCredito = 'Los datos se han guardado correctamente';
         },
-        onUpdateSulicitud: (state, { payload }) => {
-            console.log(payload)
-            console.log(state.listSolicitud)
-            // state.listSolicitud = state.listSolicitud.map(solicitud=> {
-            //   if (solicitud.id === payload.id) {
-            //     return payload1
-            //   }
-            //   return solicitud
-            // })
-            // state.mensajeSolicitud = 'Los datos se actualizaron correctamente'
+        onUpdateSulicitudCredito: (state, { payload }) => {
+            state.listSolicitudCredito = state.listSolicitudCredito.map(soliciudCredito => {
+                if (soliciudCredito.id === payload.id) {
+                    return payload
+                }
+                return soliciudCredito
+            })
+            state.mensajeSolicitudCredito = 'Los datos se actualizaron correctamente'
         },
-        onDeleteSolicitud: (state) => {
-            const solicitudActiva = state.activeSolicitud
-            console.log(solicitudActiva)
-            // if (solicitudActiva) {
-            //      for (let i = 0; i < solicitudActiva.length; i++) {
-            //     const element = solicitudActiva[i].id;
-            //     if (element) {
-            //         state.listSolicitud = state.listSolicitud.filter(solicitud => solicitud.id !== element);
-            //         state.activeSolicitud = [];
-            //         state.inicialSolicitud = [];
-            //         state.mensajeSolicitud = 'Los datos se han eliminado correctamente'
-            //     }
-            // }
-            // }
+        onDeleteSolicitudCredito: (state, { payload }) => {
+            state.listSolicitudCredito = state.listSolicitudCredito.filter(solicitudCredito => solicitudCredito.id !== payload.id);
+            state.isLoadingSolicitudesCredito = true;
+            state.activeSolicitudCredito = [];
+            state.inicialSolicitudCredito = [];
+            state.mensajeSolicitudCredito = 'Los datos se han eliminado correctamente';
+
         },
+        clearMessageSolicitudCredito: (state) => {
+            state.mensajeSolicitudCredito = '';
+        }
     }
 
 })
 
 export const {
-    onLoadSolicitud,
-    onSetActiveSolicitud,
-    onAddNewSolicitud,
-    onUpdateSulicitud,
-    onDeleteSolicitud, } = solicitudSlice.actions
+    onLoadSolicitudCredito,
+    onSetActiveSolicitudCredito,
+    onAddNewSolicitudCredito,
+    onUpdateSulicitudCredito,
+    onDeleteSolicitudCredito, } = solicitudSlice.actions

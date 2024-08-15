@@ -4,6 +4,10 @@ interface FormValidations {
     [key: string]: [(value: any) => boolean, string];
 }
 
+type InputChangeEvent =
+    | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    | { target: { name: string; value: any } };
+
 export const useForm = <T extends object>(inicialForm: T = {} as T, formValidations: FormValidations = {}) => {
     const [formState, setFormState] = useState<T>(inicialForm);
     const [formValidation, setFormValidation] = useState<{ [key: string]: string | null }>({});
@@ -23,7 +27,7 @@ export const useForm = <T extends object>(inicialForm: T = {} as T, formValidati
         return true;
     }, [formValidation]);
 
-    const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onInputChange = (event: InputChangeEvent) => {
         const { name, value } = event.target;
         setFormState(prevState => ({
             ...prevState,

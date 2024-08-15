@@ -10,11 +10,11 @@ import { TableFilters } from './TableFilters'
 export const Tabla = () => {
     const title = 'Solicitudes de creditos'
     const {
-        listSolicitud,
-        activeSolicitud,
-        isLoadingSolicitud,
+        listSolicitudCredito,
+        activeSolicitudCredito,
+        isLoadingSolicitudesCredito,
         startLoadingSolicitudes,
-        setActiveSolicitud } = useSolicitudStore();
+        setActiveSolicitudCredito } = useSolicitudStore();
 
 
     const [resultadoBusqueda, setResultadoBusqueda] = useState(null);
@@ -27,10 +27,10 @@ export const Tabla = () => {
         >
             <BasicTable
                 title={title}
-                objetos={listSolicitud}
-                objactive={activeSolicitud}
-                setObjecActive={setActiveSolicitud}
-                isLoadingObjects={isLoadingSolicitud}
+                objetos={listSolicitudCredito}
+                objactive={activeSolicitudCredito}
+                setObjecActive={setActiveSolicitudCredito}
+                isLoadingObjects={isLoadingSolicitudesCredito}
                 startLoadingObjects={startLoadingSolicitudes()}
                 tableCells={<TableCells
                     list={resultadoBusqueda}

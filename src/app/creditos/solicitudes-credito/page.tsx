@@ -5,6 +5,7 @@ import { Tabla } from './components/tablas/Tabla'
 import { Alert, Grid, Toolbar } from '@mui/material'
 import { SolicitudModal } from './components/modal/SolicitudModal'
 import { useSolicitudStore } from '@/app/hooks/creditos/useSolicitudStore'
+import { AuthSignature } from './components/authoritationSignature/AuthSignature'
 
 export default function Creditos() {
 
@@ -26,6 +27,7 @@ export default function Creditos() {
         </Grid>
       </Toolbar>
       <Tabla />
+      <AuthSignature />
       <SolicitudModal />
     </>
   )

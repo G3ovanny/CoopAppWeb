@@ -2,7 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
 
-export const BaseTab = (props: any) => {
+interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+  }
+
+export const BaseTab = (props: TabPanelProps) => {
     const { children, value, index, ...other } = props;
     return (
         <div
@@ -20,9 +26,3 @@ export const BaseTab = (props: any) => {
         </div>
     )
 }
-
-BaseTab.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
